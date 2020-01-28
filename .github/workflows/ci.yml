@@ -24,4 +24,39 @@ jobs:
               working-directory: .
               run: ./gradlew test
 
+    system-test:
+        runs-on: ubuntu-latest
+        needs: build-and-test # make sure unit testing is run first
+        steps:
+            - uses: actions/checkout@v1
 
+            # Run the server
+            - name: Run Docker Compose
+              working-directory: .
+              run: docker-compose up -d --build
+
+            - uses: actions/setup-python@v1
+              with:
+                  python-version: '3.x'
+            - run: pip install -U pytest requests 
+
+            # Install system test dependencies
+            # - name: Install pytest and requests
+            #   working-directory: .
+            #   run: pip3 install -U pytest && pip3 install -U requests
+
+            # Run system tests using `pytest`
+            - name: Run system tests
+              working-directory: .
+              run: pytest
+
+            # Bring containers down
+            - name: Purge containers
+              working-directory: .
+              run: docker-compose down
+
+            # DONE 1. Run docker compose (hint `up`)
+            # 2. Install pytest + requests
+            # 3. Run `pytest`
+            # 4. Purge docker compose (hint `down`)
+        # ...
