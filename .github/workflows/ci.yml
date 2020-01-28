@@ -37,8 +37,8 @@ jobs:
 
             - uses: actions/setup-python@v1
               with:
-                  python-version: '3.x'
-            - run: pip install -U pytest requests 
+                  python-version: '3.7'
+            - run: pip install pytest requests 
 
             # Install system test dependencies
             # - name: Install pytest and requests
