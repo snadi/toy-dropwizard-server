@@ -1,13 +1,12 @@
 # Get the Gradle image so we can build JAR file first
-FROM gradle:8.4.0-jdk8 AS build
+FROM gradle:8.4.0-jdk21-alpine AS build
 
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle wrapper
 RUN ./gradlew shadowJar
 
-# Get the Java version 8 image
-FROM openjdk:18
+FROM openjdk:21
 
 WORKDIR /app
 COPY --from=build /home/gradle/src/build/libs/hello-friends-1.0-SNAPSHOT-all.jar /app
