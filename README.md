@@ -9,7 +9,7 @@ To create a fat jar:
 To run your application:
 
 ```
-java -jar build/libs/hello-friends-1.0-SNAPSHOT.jar server hello-world.yml
+java -jar build/libs/hello-friends-1.0-SNAPSHOT-all.jar server hello-world.yml
 ```
 
 To build and run your application:
