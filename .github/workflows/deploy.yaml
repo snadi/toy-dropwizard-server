@@ -48,5 +48,5 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/prod/src/
+            cd ~/prod/
             sudo docker-compose down && sudo docker-compose up --build -d
