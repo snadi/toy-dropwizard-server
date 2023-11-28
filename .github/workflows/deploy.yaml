@@ -49,4 +49,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/prod/
-            docker-compose down && docker-compose up --build -d
+            docker-compose down
+            docker-compose up --build -d
