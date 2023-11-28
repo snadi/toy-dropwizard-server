@@ -1,5 +1,5 @@
 template: Hello, %s!
-defaultName: Stranger
+defaultName: computer science students
 
 server:
   applicationConnectors:
